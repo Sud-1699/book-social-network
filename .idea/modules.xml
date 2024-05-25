@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/book-social-network.iml" filepath="$PROJECT_DIR$/.idea/book-social-network.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bsn-backend/bsn-backend.iml" filepath="$PROJECT_DIR$/bsn-backend/bsn-backend.iml" />
     </modules>
   </component>
 </project>

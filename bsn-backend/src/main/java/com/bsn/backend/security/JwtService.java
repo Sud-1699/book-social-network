@@ -23,9 +23,9 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    @Value("${spring.application.security.jwt.expiration}")
+    @Value("${application.security.jwt.expiration}")
     private long jwtExpiration;
-    @Value("${spring.application.security.jwt.secretKey}")
+    @Value("${application.security.jwt.secretKey}")
     private String secretKey;
 
     public String generateToken(UserDetails userDetails) {
