@@ -6,6 +6,7 @@ package com.bsn.backend.book;
  *
  */
 
+import com.bsn.backend.history.*;
 import org.springframework.stereotype.*;
 
 @Service
@@ -35,6 +36,18 @@ public class BookMapper {
                 .shareable(book.isShareable())
                 .owner(book.getOwner().getFullName())
 //                .cover()
+                .build();
+    }
+
+    public BorrowedBookResponse toBorrowedBookResponse(BookTransactionHistory history) {
+        return BorrowedBookResponse.builder()
+                .id(history.getBook().getId())
+                .title(history.getBook().getTitle())
+                .authorName(history.getBook().getAuthorName())
+                .isbn(history.getBook().getIsbn())
+                .rate(history.getBook().getRate())
+                .returned(history.isReturned())
+                .returnApprove(history.isReturnApproved())
                 .build();
     }
 }
