@@ -6,6 +6,7 @@ package com.bsn.backend.book;
  *
  */
 
+import com.bsn.backend.file.*;
 import com.bsn.backend.history.*;
 import org.springframework.stereotype.*;
 
@@ -35,7 +36,7 @@ public class BookMapper {
                 .archived(book.isArchived())
                 .shareable(book.isShareable())
                 .owner(book.getOwner().getFullName())
-//                .cover()
+                .cover(FileUtils.readFile(book.getBookCover()))
                 .build();
     }
 

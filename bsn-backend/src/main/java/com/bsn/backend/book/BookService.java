@@ -8,6 +8,7 @@ package com.bsn.backend.book;
 
 import com.bsn.backend.common.PageResponse;
 import com.bsn.backend.exception.*;
+import com.bsn.backend.file.*;
 import com.bsn.backend.history.BookTransactionHistory;
 import com.bsn.backend.history.BookTransactionHistoryRepository;
 import com.bsn.backend.user.User;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.*;
 
 import java.util.*;
 
@@ -31,6 +33,7 @@ public class BookService {
     private final BookRepository bookRepository;
     private final BookTransactionHistoryRepository bookTransactionHistoryRepository;
     private final BookMapper bookMapper;
+    private final FileStorageService fileStorageService;
 
     public Integer save(BookRequest request, Authentication authentication) {
         User user = (User) authentication.getPrincipal();
@@ -195,5 +198,14 @@ public class BookService {
                 .orElseThrow(() -> new OperationNotPermittedException("The requested book is not returned yet. So, you cannot approve its return"));
         bookTransactionHistory.setReturnApproved(true);
         return bookTransactionHistoryRepository.save(bookTransactionHistory).getId();
+    }
+
+    public void uploadBookCover(Integer bookId, Authentication connectedUser, MultipartFile file) {
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new EntityNotFoundException("No book found with ID:: " + bookId));
+        User user = (User) connectedUser.getPrincipal();
+        var bookCover = fileStorageService.saveFile(user.getId(), file);
+        book.setBookCover(bookCover);
+        bookRepository.save(book);
     }
 }
