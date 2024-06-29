@@ -7,9 +7,11 @@ package com.bsn.backend.feedback;
  */
 
 import com.bsn.backend.book.*;
+import org.springframework.stereotype.*;
 
 import java.util.*;
 
+@Service
 public class FeedbackMapper {
 
     public Feedback toFeedback(FeedbackRequest request) {
