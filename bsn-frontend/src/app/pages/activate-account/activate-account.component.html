@@ -1,7 +1,7 @@
 <div class="container" *ngIf="submitted; else codeForm">
     <div class="activate-message" *ngIf="isActivated; else activationError">
         <h2>Activation Successful</h2>
-        <p>Your Account has been successfully activated.</p>
+        <p>{{message}}</p>
         <button class="btn btn-primary" (click)="redirectTologin()">Go to login</button>
     </div>
     <ng-template #activationError>
