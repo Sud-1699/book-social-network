@@ -1,4 +1,4 @@
-<div class="card" style="width: 20rem;">
+<div class="card border-2" [class.border-success]="book.shareable" [class.border-warning]="book.archived" style="width: 20rem;">
     <img [src]="bookCover" class="card-img-top" alt="book cover" height="200">
     <div class="card-body overflow-scroll">
         <h5 class="card-title fs-6 text-nowrap fw-bold mb-1">

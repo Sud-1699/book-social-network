@@ -53,15 +53,27 @@ export class MyBookComponent implements OnInit {
   }
 
   public archiveBook(book: BookResponse) {
-
+    this.bookService.updateArchivedStatus({
+      "book-id": book.id as number
+    }).subscribe({
+      next: () => {
+        book.archived = !book.archived;
+      }
+    })
   }
 
   public shareBook(book: BookResponse) {
-
+    this.bookService.updateShareableStatus({
+      "book-id": book.id as number
+    }).subscribe({
+      next: () => {
+        book.shareable = !book.shareable;
+      }
+    });
   }
 
   public editBook(book: BookResponse) {
-
+    this.router.navigate(['books', 'manage', book.id]);
   }
 
   private fetchBooks() {
