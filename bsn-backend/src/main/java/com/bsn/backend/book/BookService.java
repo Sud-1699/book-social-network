@@ -191,8 +191,8 @@ public class BookService {
         if(book.isArchived() || !book.isShareable()) {
             throw new OperationNotPermittedException("The requested book cannot be approve as return since it is archived or not shareable");
         }
-        if(Objects.equals(book.getOwner().getId(), user.getId())) {
-            throw new OperationNotPermittedException("You cannot return or borrow your own book");
+        if(!Objects.equals(book.getOwner().getId(), user.getId())) {
+            throw new OperationNotPermittedException("You cannot return a book that you do not own");
         }
         BookTransactionHistory bookTransactionHistory = bookTransactionHistoryRepository.findByBookIdAndOwnerId(bookId, user.getId())
                 .orElseThrow(() -> new OperationNotPermittedException("The requested book is not returned yet. So, you cannot approve its return"));

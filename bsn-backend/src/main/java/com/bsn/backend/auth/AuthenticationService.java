@@ -116,7 +116,7 @@ public class AuthenticationService {
                 .build();
     }
 
-//    @Transactional //causing issues during token expire
+//    @Transactional //causing issues during token expire will roll back the query execution
     public void activateAccount(String token) throws MessagingException {
         Token savedToken = tokenRepository.findByToken(token)
                 //todo expection has to be defined
