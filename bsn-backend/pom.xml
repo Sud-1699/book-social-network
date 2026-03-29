@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.bsn</groupId>
 	<artifactId>bsn-backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<name>bsn-backend-api</name>
 	<description>Spring Boot for Book Social Network</description>
 	<properties>

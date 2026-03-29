@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/book_social_network
+    url: jdbc:postgresql://localhost:5432/book_social_network
     username: bsn_dev
     password: bsnDev@123
     driver-class-name: org.postgresql.Driver
@@ -17,20 +17,20 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   mail:
-    host: localhost
-    port: 1025
-    username: bsnmail
-    password: bsnmail123
+    host: smtp.ethereal.email
+    port: 587
+    username: zackary.bergstrom@ethereal.email
+    password: AvHFCKTmqr5mJ2jVBT
     properties:
       mail:
         smtp:
-          trust: "*"
-        auth: true
-        starttls:
-          enable: true
-        timeout: 3000
-        writetimeout: 5000
-        connectiontimeout: 5000
+          auth: true
+          ssl:
+            enable: true
+            trust: "*"
+          starttls:
+            enable: true
+      protocol: smtp
 
 application:
   security:

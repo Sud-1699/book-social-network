@@ -1,0 +1,7 @@
+Book Social Network
+
+Dockerfile cmd
+docker build -t bsn/bsn-ui:1.0.0 -f ../docker/frontend/Dockerfile .
+
+Run the application
+docker compose up -d

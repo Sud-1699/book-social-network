@@ -1,0 +1,8 @@
+Book Social Network
+
+Dockerfile cmd
+docker build -t bsn/bsn:1.0.1 -f ../docker/backend/Dockerfile .
+docker build --build-arg="APP_VERSION=1.0.3" -t bsn/bsn:1.0.1 -f ../docker/backend/Dockerfile .
+
+Run the application
+docker compose up -d
