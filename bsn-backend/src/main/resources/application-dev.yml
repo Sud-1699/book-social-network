@@ -9,7 +9,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: false
     properties:
       hibernate:
@@ -31,15 +31,14 @@ spring:
         timeout: 3000
         writetimeout: 5000
         connectiontimeout: 5000
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:9090/realms/book-social-network"
 
 application:
-  security:
-    jwt:
-      secretKey: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-      expiration: 8640000
-  mailing:
-    frontend:
-      activation-url: http://localhost:4200/activate-account
+
   file:
     upload:
       photo-output-path: ./uploads

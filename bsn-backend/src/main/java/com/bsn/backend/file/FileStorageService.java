@@ -29,7 +29,7 @@ public class FileStorageService {
     private String fileUploadPath;
 
     public String saveFile(
-            @NotNull Integer userId,
+            @NotNull String userId,
             @NotNull MultipartFile file) {
         final String fileUploadSubPath = "users" + separator + userId;
         return uploadFile(fileUploadSubPath, file);

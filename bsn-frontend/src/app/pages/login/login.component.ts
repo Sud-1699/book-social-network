@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Constants } from 'src/app/app.constants';
+import { KeycloakService } from 'src/app/commons/keycloak/keycloak.service';
 import { AuthenticationRequest, AuthenticationResponse } from 'src/app/commons/models';
 import { AuthenticationService } from 'src/app/commons/services';
 import { TokenService } from 'src/app/commons/services/core/token.service';
@@ -10,7 +11,7 @@ import { TokenService } from 'src/app/commons/services/core/token.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   authRequest: AuthenticationRequest = {
     email: '',
@@ -22,9 +23,19 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthenticationService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private keycloakService: KeycloakService
   ) {
 
+  }
+
+  ngOnInit(): void {
+    this.initKeycloak();
+  }
+
+  private async initKeycloak() {
+    await this.keycloakService.init();
+    await this.keycloakService.login();
   }
 
   public register() {

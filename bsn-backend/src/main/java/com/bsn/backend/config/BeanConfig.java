@@ -26,7 +26,7 @@ import java.util.*;
 @RequiredArgsConstructor
 public class BeanConfig {
 
-    private final UserDetailsService userDetailsService;
+   /* private final UserDetailsService userDetailsService;
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
@@ -42,13 +42,13 @@ public class BeanConfig {
     }
 
     @Bean
-    public AuditorAware<Integer> auditorAware() {
-        return new AuditAware();
-    }
-
-    @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }*/
+
+    @Bean
+    public AuditorAware<String> auditorAware() {
+        return new AuditAware();
     }
 
     @Bean

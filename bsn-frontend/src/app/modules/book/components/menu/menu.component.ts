@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { KeycloakService } from 'src/app/commons/keycloak/keycloak.service';
 
 @Component({
   selector: 'app-menu',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit{
+
+  constructor(private keycloakService: KeycloakService) {}
 
   ngOnInit(): void {
     const linkActive = document.querySelectorAll('.nav-link');
@@ -18,9 +21,12 @@ export class MenuComponent implements OnInit{
       })
     })
   }
+
+  get username() {
+    return this.keycloakService.profile?.username;
+  }
   
   logout() {
-    localStorage.clear();
-    window.location.reload();
+    this.keycloakService.logout();
   }
 }

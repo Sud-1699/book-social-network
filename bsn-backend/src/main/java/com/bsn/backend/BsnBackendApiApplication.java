@@ -18,7 +18,7 @@ public class BsnBackendApiApplication {
 		SpringApplication.run(BsnBackendApiApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	public CommandLineRunner runner(RoleRepository roleRepository) {
 		return args -> {
 			if(roleRepository.findByName("USER").isEmpty()) {
@@ -27,5 +27,5 @@ public class BsnBackendApiApplication {
 				);
 			}
 		};
-	}
+	}*/
 }

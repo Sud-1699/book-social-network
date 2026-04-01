@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.http.HttpStatus.ACCEPTED;
 
-@RestController
-@RequiredArgsConstructor
-@RequestMapping("auth")
+//@RestController
+//@RequiredArgsConstructor
+//@RequestMapping("auth")
 @Tag(name = "Authentication")
 public class AuthenticationController {
 
-    private final AuthenticationService authService;
+    /*private final AuthenticationService authService;
 
     @PostMapping("/register")
     @ResponseStatus(ACCEPTED)
@@ -38,5 +38,5 @@ public class AuthenticationController {
     @GetMapping("/activate-account")
     public void activateAccount(@RequestParam String token) throws MessagingException {
         authService.activateAccount(token);
-    }
+    }*/
 }

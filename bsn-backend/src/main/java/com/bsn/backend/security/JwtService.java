@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.function.Function;
 
-@Service
+//@Service
 public class JwtService {
 
     @Value("${application.security.jwt.expiration}")

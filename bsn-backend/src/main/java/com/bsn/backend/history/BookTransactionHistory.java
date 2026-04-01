@@ -9,6 +9,7 @@ package com.bsn.backend.history;
 import com.bsn.backend.book.Book;
 import com.bsn.backend.common.BaseEntity;
 import com.bsn.backend.user.User;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -26,9 +27,11 @@ import lombok.experimental.SuperBuilder;
 @Entity
 public class BookTransactionHistory extends BaseEntity {
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private User user;*/
+    @Column(name = "user_id")
+    private String userId;
     @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;

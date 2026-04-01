@@ -30,11 +30,11 @@ import java.util.List;
 
 import static com.bsn.backend.email.EmailTemplateName.ACTIVATE_ACCOUNT;
 
-@Service
-@RequiredArgsConstructor
+//@Service
+//@RequiredArgsConstructor
 public class AuthenticationService {
 
-    private final RoleRepository roleRepository;
+    /*private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final TokenRepository tokenRepository;
@@ -134,5 +134,5 @@ public class AuthenticationService {
         userRepository.save(user);
         savedToken.setValidateAt(LocalDateTime.now());
         tokenRepository.save(savedToken);
-    }
+    }*/
 }

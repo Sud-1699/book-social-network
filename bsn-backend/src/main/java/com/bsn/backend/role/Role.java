@@ -8,12 +8,7 @@ package com.bsn.backend.role;
 
 import com.bsn.backend.user.User;
 import com.fasterxml.jackson.annotation.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,8 +26,9 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@EntityListeners(AuditingEntityListener.class)
+//@Entity
+//@Table(name = "role")
+//@EntityListeners(AuditingEntityListener.class)
 public class Role {
 
     @Id

@@ -26,8 +26,8 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @EnableMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
 
-    private final JwtFilter jwtAuthfilter;
-    private final AuthenticationProvider authenticationProvider;
+    /*private final JwtFilter jwtAuthfilter;
+    private final AuthenticationProvider authenticationProvider;*/
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -49,9 +49,8 @@ public class SecurityConfig {
                                 "/webjars/**"
                         ).permitAll().anyRequest().authenticated()
                 )
-                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
-                .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthfilter, UsernamePasswordAuthenticationFilter.class);
+                .oauth2ResourceServer(auth ->
+                        auth.jwt(token -> token.jwtAuthenticationConverter(new JwtAuthenticationConverter())));
         return httpSecurity.build();
     }
 }
