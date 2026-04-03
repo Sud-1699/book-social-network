@@ -17,10 +17,10 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   mail:
-    host: smtp.ethereal.email
-    port: 587
-    username: zackary.bergstrom@ethereal.email
-    password: AvHFCKTmqr5mJ2jVBT
+    host: ${EMAIL_HOSTNAME}
+    port: 465
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
     properties:
       mail:
         smtp:
@@ -43,3 +43,5 @@ application:
   file:
     upload:
       photo-output-path: ./uploads
+  cors:
+    origins: ${ALLOWED_ORIGINS}

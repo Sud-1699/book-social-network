@@ -26,7 +26,8 @@ import { ReturnBooksComponent } from './pages/return-books/return-books.componen
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CodeInputModule
+    CodeInputModule,
+    ApiModule.forRoot({rootUrl: 'http://192.168.0.227:8088/api/v1'})
   ],
   providers: [
     HttpClient,

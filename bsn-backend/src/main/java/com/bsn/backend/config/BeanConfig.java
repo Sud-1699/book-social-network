@@ -7,6 +7,7 @@ package com.bsn.backend.config;
  */
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.*;
@@ -25,6 +26,9 @@ import java.util.*;
 @Configuration
 @RequiredArgsConstructor
 public class BeanConfig {
+
+    @Value("${application.cors.origins:*}")
+    List<String> allowedOrigins;
 
     private final UserDetailsService userDetailsService;
 
@@ -55,24 +59,10 @@ public class BeanConfig {
     public CorsFilter corsFilter() {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowCredentials(true);
-        configuration.setAllowedOrigins(List.of(
-                "http://localhost:4200",
-                "http://localhost:8080"
-        ));
-        configuration.setAllowedHeaders(Arrays.asList(
-                HttpHeaders.ORIGIN,
-                HttpHeaders.CONTENT_TYPE,
-                HttpHeaders.ACCEPT,
-                HttpHeaders.AUTHORIZATION
-        ));
-        configuration.setAllowedMethods(Arrays.asList(
-                "GET",
-                "POST",
-                "DELETE",
-                "PUT",
-                "PATCH"
-        ));
+//        configuration.setAllowCredentials(true);
+        configuration.setAllowedOrigins(allowedOrigins);
+        configuration.setAllowedHeaders(List.of("*")); // not recommended for production
+        configuration.setAllowedMethods(List.of("*")); // not recommended for production
 
         source.registerCorsConfiguration("/**", configuration);
         return new CorsFilter(source);

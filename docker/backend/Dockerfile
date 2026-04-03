@@ -22,5 +22,9 @@ ENV DB_URL=jdbc:postgresql://postgres-sql-bsn:5432/book_social_network
 ENV DB_TIMEZONE=Asia/Kolkata
 ENV ACTIVE_PROFILE=${PROFILE}
 ENV JAR_VERSION=${APP_VERSION}
+ENV EMAIL_HOSTNAME=missing_host_name
+ENV EMAIL_USERNAME=missing_user_name
+ENV EMAIL_PASSWORD=missing_password
+ENV ALLOWED_ORIGINS=origins
 
 CMD java -jar -Duser.timezone=${DB_TIMEZONE} -Dspring.profiles.active=${ACTIVE_PROFILE} -Dspring.datasource.url=${DB_URL} bsn-backend-${JAR_VERSION}.jar
